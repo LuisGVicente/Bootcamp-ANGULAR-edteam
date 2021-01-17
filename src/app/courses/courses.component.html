@@ -1,0 +1,51 @@
+<div>
+    <ul>
+        <li *ngFor="let curso of cursos">{{curso.name}}</li>
+
+    </ul>
+</div>
+    
+<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="row filtro">
+        <div class="col-md-2">Filtrar por:</div>
+        <div class="col-md-6">
+            <input #filtro type="text" [(ngModel)]="textoFiltro">
+            <span>{{textoFiltro}}</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div>
+            <table class="table">
+                <thead>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha Inicio</th>
+                    <th>Precio</th>
+                    <th>Rating</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos">
+                        <td>
+                            <img [src]="curso.imageUrl" [style.width]="anchoImagen" [title]="'Typescript'">
+                        </td>
+                        <td>{{curso.name}}</td>
+                        <td>{{curso.description}}</td>
+                        <td>{{curso.startDate}}</td>
+                        <td>{{curso.price}}</td>
+                        <td>{{curso.rating}}</td>
+                        <td>
+
+                        <ed-course-action [curso]="curso" (edit)="onEditCurso($event)" (delete)="onDeleteCurso($event)"></ed-course-action>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
